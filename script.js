@@ -1,6 +1,6 @@
-const NUMBER = 50
+const NUMBER = 85
 const SPEED = 1
-const DIST = 70
+const DIST = 85
 
 const canvas = document.querySelector('canvas')
 const context = canvas.getContext('2d')
@@ -14,7 +14,7 @@ for (let i = 0; i < NUMBER; i++) {
   const point = {
     x: getRandom(0, canvas.width),
     y: getRandom(0, canvas.height),
-    angle:getRandom(0, 2 * Math.PI)
+    angle:getRandom(0, 1 * Math.PI)
   }
 
   points.push(point)
@@ -39,8 +39,8 @@ function drawLines () {
       const dist = getDist(pointA, pointB)
 
       if (dist <= DIST) {
-        context.strokeStyle = 'white'
-        context.lineWidth = (1 - dist / DIST)**2
+        context.strokeStyle = '#a961d8'
+        context.lineWidth = (0.5 - dist / DIST)**3
         context.moveTo(pointA.x, pointA.y)
         context.lineTo(pointB.x, pointB.y)
         context.stroke()
@@ -62,7 +62,7 @@ function drawPoints () {
   for (const point of points) {
     context.beginPath()
     context.fillStyle = 'white'
-    context.arc(point.x, point.y, 3, 0, Math.PI * 2)
+    context.arc(point.x, point.y, 1, 0, Math.PI * 2)
     context.fill()
   }
 }
